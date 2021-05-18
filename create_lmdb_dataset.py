@@ -6,6 +6,7 @@ import lmdb
 import cv2
 
 import numpy as np
+from chars_var import CHARS
 
 
 def checkImageIsValid(imageBin):

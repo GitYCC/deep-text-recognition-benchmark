@@ -4,6 +4,7 @@ import time
 import random
 import string
 import argparse
+from datetime import datetime
 
 import torch
 import torch.backends.cudnn as cudnn
@@ -170,6 +171,8 @@ def train(opt):
         optimizer.step()
 
         loss_avg.add(cost)
+        
+        print('*', end='')
 
         # validation part
         if (iteration + 1) % opt.valInterval == 0 or iteration == 0: # To see training progress, we also conduct validation when 'iteration == 0' 
@@ -212,6 +215,7 @@ def train(opt):
 
                     predicted_result_log += f'{gt:25s} | {pred:25s} | {confidence:0.4f}\t{str(pred == gt)}\n'
                 predicted_result_log += f'{dashed_line}'
+                predicted_result_log += f'\nnow: {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}'
                 print(predicted_result_log)
                 log.write(predicted_result_log + '\n')
 

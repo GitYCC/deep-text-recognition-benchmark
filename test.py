@@ -153,6 +153,7 @@ def validation(model, criterion, evaluation_loader, converter, opt):
                 pred = re.sub(out_of_alphanumeric_case_insensitve, '', pred)
                 gt = re.sub(out_of_alphanumeric_case_insensitve, '', gt)
 
+            pred = pred.replace(' ', '')  # 因為訓練有空白但是validation沒有，故去除
             if pred == gt:
                 n_correct += 1
 

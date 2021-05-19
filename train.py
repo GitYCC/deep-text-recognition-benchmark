@@ -171,8 +171,6 @@ def train(opt):
         optimizer.step()
 
         loss_avg.add(cost)
-        
-        print('*', end='')
 
         # validation part
         if (iteration + 1) % opt.valInterval == 0 or iteration == 0: # To see training progress, we also conduct validation when 'iteration == 0' 
